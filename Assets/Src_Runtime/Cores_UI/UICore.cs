@@ -13,7 +13,7 @@ namespace Practice
         public void Ctor()
         {
             ctx = new UIContext();
-            events = new UIEventCenter();
+            events = ctx.events;
         }
 
         public void Inject(Canvas screenCanvas, AssetsModule assetsModule)

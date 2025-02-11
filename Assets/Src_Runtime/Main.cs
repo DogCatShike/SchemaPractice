@@ -71,6 +71,8 @@ namespace Practice.Main
 
         public void BindEvents_System_Login()
         {
+            loginSystem.Login_Binding();
+            
             var events = loginSystem.Events;
 
             events.OnStartHandle += () => {
