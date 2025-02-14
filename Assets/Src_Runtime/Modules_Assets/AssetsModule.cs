@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Practice.Template;
 
 namespace Practice
 {
@@ -15,6 +16,10 @@ namespace Practice
 
         public Dictionary<string, GameObject> uiDict;
         AsyncOperationHandle uiHandle;
+
+        // TM
+        public Dictionary<int, RoleTM> roleDict;
+        AsyncOperationHandle roleHandle;
 
         public void Ctor()
         {
@@ -43,7 +48,7 @@ namespace Practice
                 labelReference.labelString = AssetLabelConst.PANEL;
                 var handle = Addressables.LoadAssetsAsync<GameObject>(labelReference, null);
                 var list = await handle.Task;
-                
+
                 foreach (var item in list)
                 {
                     uiDict.Add(item.name, item);
@@ -54,7 +59,24 @@ namespace Practice
 
             #region TM
             {
-
+                AssetLabelReference labelReference = new AssetLabelReference();
+                labelReference.labelString = AssetLabelConst.TM_ROLE;
+                var handle = Addressables.LoadAssetsAsync<RoleSO>(labelReference, null);
+                var list = await handle.Task;
+                foreach (var so in list)
+                {
+                    var tm = so.tm;
+                    // if (tm.modPrefab == null || tm.modPrefab.GetComponent<RoleMod>() == null)
+                    // {
+                    //     Debug.LogError("Role Add: ModPrefab Not Found: " + tm.typeID);
+                    // }
+                    bool succ = roleDict.TryAdd(tm.typeID, tm);
+                    if (!succ)
+                    {
+                        Debug.LogError("Role Add: Already Exist: " + tm.typeID);
+                    }
+                }
+                roleHandle = handle;
             }
             #endregion
         }
@@ -70,6 +92,12 @@ namespace Practice
             if (uiHandle.IsValid())
             {
                 Addressables.Release(uiHandle);
+            }
+
+            // ==== TM ====
+            if (roleHandle.IsValid())
+            {
+                Addressables.Release(roleHandle);
             }
         }
 
@@ -87,6 +115,12 @@ namespace Practice
         public bool UI_TryGet(string key, out GameObject panel)
         {
             return uiDict.TryGetValue(key, out panel);
+        }
+        #endregion
+
+        #region TM Role
+        public bool Role_TryGet(int typeID, out RoleTM tm) {
+            return roleDict.TryGetValue(typeID, out tm);
         }
         #endregion
     }

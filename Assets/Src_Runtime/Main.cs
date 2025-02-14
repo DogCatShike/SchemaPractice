@@ -69,6 +69,7 @@ namespace Practice.Main
             assetsModule.ReleaseAll();
         }
 
+        #region Binding_LoginSystem
         public void BindEvents_System_Login()
         {
             loginSystem.Login_Binding();
@@ -79,5 +80,6 @@ namespace Practice.Main
                 Debug.Log("Start Game");
             };
         }
+        #endregion
     }
 }
