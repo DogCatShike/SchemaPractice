@@ -18,9 +18,9 @@ namespace Practice.System_Game
             events = new GameSystemEvents();
         }
 
-        public void Inject(UICore uiCore)
+        public void Inject(UICore uiCore, AssetsModule assetsModule, InputModule inputModule)
         {
-            ctx.Inject(uiCore);
+            ctx.Inject(uiCore, assetsModule, inputModule);
         }
 
         public void Enter()

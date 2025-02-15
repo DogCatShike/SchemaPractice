@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Practice.Template
 {
+    [Serializable]
     public class RoleTM
     {
         public int typeID;

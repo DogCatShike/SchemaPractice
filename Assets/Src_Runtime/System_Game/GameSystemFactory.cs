@@ -34,6 +34,12 @@ namespace Practice.System_Game
 
             role.idSig = new IDSignature(EntityType.Role, typeID);
             role.roleType = tm.roleType;
+
+            // Attr
+            var attrCom = role.AttrCom;
+            attrCom.SetMoveSpeed(tm.moveSpeed);
+            attrCom.SetJumpForce(tm.jumpForce);
+            attrCom.SetJumpTimes(tm.jumpTimes);
             
             role.Ctor();
 

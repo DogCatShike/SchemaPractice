@@ -9,15 +9,21 @@ namespace Practice.System_Game
         public bool isRunning;
 
         public UICore uiCore;
+        public AssetsModule assetsModule;
+        public InputModule inputModule;
+
+        public RoleRepo roleRepo;
 
         public GameSystemContext()
         {
-
+            roleRepo = new RoleRepo();
         }
 
-        public void Inject(UICore uiCore)
+        public void Inject(UICore uiCore, AssetsModule assetsModule, InputModule inputModule)
         {
             this.uiCore = uiCore;
+            this.assetsModule = assetsModule;
+            this.inputModule = inputModule;
         }
     }
 }

@@ -13,6 +13,10 @@ namespace Practice
 
         [SerializeField] Rigidbody2D rb;
 
+        // User Input
+        RoleInputComponent inputCom;
+        public RoleInputComponent InputCom => inputCom;
+
         // AttrCom
         RoleAttributeComponent attrCom;
         public RoleAttributeComponent AttrCom => attrCom;
@@ -32,6 +36,7 @@ namespace Practice
 
         public void Ctor()
         {
+            inputCom = new RoleInputComponent();
             attrCom = new RoleAttributeComponent();
             moveCom = new RoleMoveComponent();
 
@@ -68,9 +73,10 @@ namespace Practice
             RotateFace(xAxis);
         }
 
-        public void Jump(float jumpForce)
+        public void Jump(bool isJumpDown, float jumpForce)
         {
-            moveCom.Jump(jumpForce);
+            moveCom.Jump(isJumpDown, jumpForce);
+            ExitGround();
         }
 
         void RotateFace(float xAxis)

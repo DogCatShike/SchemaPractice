@@ -31,9 +31,9 @@ namespace Practice
             rb.velocity = velo;
         }
 
-        public void Jump(float jumpForce)
+        public void Jump(bool isJumpDown, float jumpForce)
         {
-            if (jumpTimes > 0)
+            if (isJumpDown && jumpTimes > 0)
             {
                 var velo = rb.velocity;
                 velo.y = jumpForce;
