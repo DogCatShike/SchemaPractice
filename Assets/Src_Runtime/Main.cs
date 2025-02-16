@@ -21,7 +21,7 @@ namespace Practice.Main
         {
             loginSystem = GetComponentInChildren<LoginSystem>();
             loginSystem.Ctor();
-            
+
             gameSystem = GetComponentInChildren<GameSystem>();
             gameSystem.Ctor();
 
@@ -61,6 +61,9 @@ namespace Practice.Main
         {
             float dt = Time.deltaTime;
 
+            inputModule.Process();
+
+            gameSystem.Tick(dt);
             loginSystem.Tick(dt);
         }
 
@@ -84,10 +87,11 @@ namespace Practice.Main
         public void BindEvents_System_Login()
         {
             loginSystem.Login_Binding();
-            
+
             var events = loginSystem.Events;
 
-            events.OnStartHandle += () => {
+            events.OnStartHandle += () =>
+            {
                 Debug.Log("Start Game");
                 loginSystem.Exit();
                 gameSystem.Enter();

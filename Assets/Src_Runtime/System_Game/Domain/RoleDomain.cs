@@ -39,6 +39,9 @@ namespace Practice.System_Game
             };
 
             ctx.roleRepo.Add(role);
+
+            FSM_Normal_Enter(role);
+            
             return role;
         }
 

@@ -16,6 +16,6 @@ MonoBehaviour:
     typeID: 1
     typeName: Player
     roleType: 1
-    moveSpeed: 10
-    jumpForce: 2
+    moveSpeed: 5
+    jumpForce: 5
     jumpTimes: 1

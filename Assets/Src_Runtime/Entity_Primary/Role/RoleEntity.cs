@@ -104,8 +104,9 @@ namespace Practice
             return moveCom.IsGround;
         }
 
-        public void EnterGround(int jumpTimes)
+        public void EnterGround()
         {
+            int jumpTimes = attrCom.jumpTimes;
             moveCom.Ground_Enter(jumpTimes);
         }
 

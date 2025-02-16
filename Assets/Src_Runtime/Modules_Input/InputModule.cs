@@ -31,7 +31,7 @@ namespace Practice
 
             // Move
             {
-                moveAxis.x = player.Left.ReadValue<float>() + player.Right.ReadValue<float>();
+                moveAxis.x = player.Right.ReadValue<float>() - player.Left.ReadValue<float>();
 
                 if (player.Left.WasPerformedThisFrame()) // 检测被执行
                 {
@@ -52,6 +52,8 @@ namespace Practice
                     key |= InputKeyFlag.Jump;
                 }
             }
+
+            // Debug.Log("xAxis: " + moveAxis.x + " isJump: " + isJump);
         }
     }
 }

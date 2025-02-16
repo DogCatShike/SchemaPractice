@@ -8,7 +8,7 @@ namespace Practice.System_Game
         #region OnCollision
         static void Phx_Body_OnCollisionEnter(GameSystemContext ctx, RoleEntity role, Collision2D other)
         {
-            
+            role.EnterGround();
         }
 
         static void Phx_Body_OnCollisionStay(GameSystemContext ctx, RoleEntity role, Collision2D other)
