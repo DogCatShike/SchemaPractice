@@ -25,6 +25,10 @@ namespace Practice
         RoleMoveComponent moveCom;
         public RoleMoveComponent MoveCom => moveCom;
 
+        // FSMCom
+        RoleFSMComponent fsmCom;
+        public RoleFSMComponent FSMCom => fsmCom;
+
         // Event
         public event Action<RoleEntity, Collision2D> OnBodyCollisionEnterHandle;
         public event Action<RoleEntity, Collision2D> OnBodyCollisionStayHandle;
@@ -39,6 +43,7 @@ namespace Practice
             inputCom = new RoleInputComponent();
             attrCom = new RoleAttributeComponent();
             moveCom = new RoleMoveComponent();
+            fsmCom = new RoleFSMComponent();
 
             moveCom.Inject(rb);
         }

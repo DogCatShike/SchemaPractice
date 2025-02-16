@@ -12,10 +12,13 @@ namespace Practice.System_Game
         public AssetsModule assetsModule;
         public InputModule inputModule;
 
+        public GameEntity gameEntity;
+
         public RoleRepo roleRepo;
 
         public GameSystemContext()
         {
+            gameEntity = new GameEntity();
             roleRepo = new RoleRepo();
         }
 

@@ -9,6 +9,7 @@ namespace Practice
         Vector2 moveAxis;
         public Vector2 MoveAxis => moveAxis;
         public void Set_MoveAxis(Vector2 value) => moveAxis = value;
+        public float Get_XAxis() => moveAxis.x;
 
         bool isJump;
         public bool IsJump => isJump;

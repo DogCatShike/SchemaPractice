@@ -10,15 +10,20 @@ namespace Practice.Main
         [SerializeField] Canvas screenCanvas;
 
         public static LoginSystem loginSystem;
+        public static GameSystem gameSystem;
 
         public static UICore uiCore;
 
         public static AssetsModule assetsModule;
+        public static InputModule inputModule;
 
         void Start()
         {
             loginSystem = GetComponentInChildren<LoginSystem>();
             loginSystem.Ctor();
+            
+            gameSystem = GetComponentInChildren<GameSystem>();
+            gameSystem.Ctor();
 
             uiCore = GetComponentInChildren<UICore>();
             uiCore.Ctor();
@@ -26,13 +31,18 @@ namespace Practice.Main
             assetsModule = GetComponentInChildren<AssetsModule>();
             assetsModule.Ctor();
 
+            inputModule = GetComponentInChildren<InputModule>();
+            inputModule.Ctor();
+
             // Inject
             loginSystem.Inject(uiCore);
+            gameSystem.Inject(uiCore, assetsModule, inputModule);
 
             uiCore.Inject(screenCanvas, assetsModule);
 
             // Binding
             BindEvents_System_Login();
+
 
             Action action = async () =>
             {
@@ -79,7 +89,16 @@ namespace Practice.Main
 
             events.OnStartHandle += () => {
                 Debug.Log("Start Game");
+                loginSystem.Exit();
+                gameSystem.Enter();
             };
+        }
+        #endregion
+
+        #region Binding_GameSystem
+        public void BindEvents_System_Game()
+        {
+            gameSystem.Game_Binding();
         }
         #endregion
     }

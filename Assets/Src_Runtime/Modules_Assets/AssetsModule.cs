@@ -25,6 +25,8 @@ namespace Practice
         {
             entityDict = new Dictionary<string, GameObject>();
             uiDict = new Dictionary<string, GameObject>();
+
+            roleDict = new Dictionary<int, RoleTM>();
         }
 
         public async Task LoadAll()
@@ -119,7 +121,8 @@ namespace Practice
         #endregion
 
         #region TM Role
-        public bool Role_TryGet(int typeID, out RoleTM tm) {
+        public bool Role_TryGet(int typeID, out RoleTM tm)
+        {
             return roleDict.TryGetValue(typeID, out tm);
         }
         #endregion

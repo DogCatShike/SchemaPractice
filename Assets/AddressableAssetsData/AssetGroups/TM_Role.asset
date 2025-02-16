@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: SO_Role
+  m_Name: TM_Role
   m_EditorClassIdentifier: 
-  m_GroupName: SO_Role
+  m_GroupName: TM_Role
   m_Data:
     m_SerializedData: []
   m_GUID: 798904daf470f8043923c850269ff81a
@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Address: RoleSO_1_Player
     m_ReadOnly: 0
     m_SerializedLabels:
-    - SO_Role
+    - TM_Role
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 066b0a2541d73cb4fa7977a2c0cd5fe4, type: 2}
